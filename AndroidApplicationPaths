@@ -1,0 +1,42 @@
+/data/data/<package_name> (and corresponding SD-part):
+
+databases/: here go the app's databases
+lib/: libraries and helpers for the app
+files/: other related files
+shared_prefs/: preferences and settings
+cache/: well, caches
+
+
+ Android 4.4+ and particularly 6+.
+ 
+DIRECTORY                                                    DESCRIPTION / API
+=====================================================================================
+APP CODE
+========
+/data/app/<pkg>*                                             (user apps installation directory)
+/data/app/<pkg>*/base.apk                                    (original `.apk` file)
+/data/app/<pkg>*/lib/<arch>/*.so                             (shared libraries)
+/data/app/<pkg>*/oat/<arch>/base.[art|odex|vdex]             (compiled executable code)
+/data/dalvik-cache/<arch>/*.[art|dex|oat|vdex]               (compiled executable code, only for system apps)
+/data/misc/profiles/cur/<user_id>/<pkg>/primary.prof         (ART profile)
+/data/misc/profiles/ref/<pkg>/primary.prof                   (ART profile)
+
+INTERNAL STORAGE
+================
+/data/user[_de]/<user_id>/<pkg>                              getDataDir
+/data/user[_de]/<user_id>/<pkg>/files                        getFilesDir
+/data/user[_de]/<user_id>/<pkg>/[code_]cache                 getCacheDir or getCodeCacheDir
+/data/user[_de]/<user_id>/<pkg>/databases                    getDatabasePath
+/data/user[_de]/<user_id>/<pkg>/no_backup                    getNoBackupFilesDir
+/data/user[_de]/<user_id>/<pkg>/shared_prefs                 getSharedPreferences
+
+EXTERNAL STORAGE
+================
+/storage/emulated/obb/<pkg>/*.obb                            (shared by multi-users, exposed in following view)
+/storage/emulated/<user_id>/Android/obb/<pkg>/*.<pkg>.obb    getObbDirs
+/storage/emulated/<user_id>/Android/media/<pkg>              getExternalMediaDirs
+/storage/emulated/<user_id>/Android/data/<pkg>/             
+/storage/emulated/<user_id>/Android/data/<pkg>/files         getExternalFilesDirs
+/storage/emulated/<user_id>/Android/data/<pkg>/[code_]cache  getExternalCacheDirs
+
+References - https://android.stackexchange.com/questions/47924/where-android-apps-store-data

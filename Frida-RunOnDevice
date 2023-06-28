@@ -1,0 +1,18 @@
+Three steps are required to run frida-server on the device. First, the frida-server binary needs to be pushed to a writable location using adb. 
+Next, execution permissions need to be set with chmod, and finally, the frida-server needs to be run as root. 
+
+adb push frida-server /data/local/tmp/
+Open a shell and change to the root user:
+
+    E:\lab-files\frida> adb shell
+    x86_64:/ $ su
+    x86_64:/ #
+
+Go to the /data/local/tmp folder and change the executable flag:
+
+    x86_64:/ # cd /data/local/tmp
+    x86_64:/data/local/tmp # chmod +x frida-server
+
+Finally, run the frida-server binary:
+
+    x86_64:/data/local/tmp # ./frida-server

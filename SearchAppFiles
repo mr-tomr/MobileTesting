@@ -1,0 +1,9 @@
+dir /s /b > allFiles.txt
+
+for /f %i in ('dir /s/b "*.plist"') do type %i | find /i "password"
+
+for /f %i in ('dir /s/b "Default-port"') do "C:\Program Files\Mozilla Firefox\firefox.exe" %i
+
+for /f %i in ('dir /s/b "*.plist"') do type %i | find /i "password"
+
+findstr ".db .sqlitedb .sqkite3 .sqlite .storedata .store .sql .kcr" allFiles.txt > allDatabases.txt

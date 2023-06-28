@@ -1,0 +1,7 @@
+adb install drozer-agent-2.x.x.apk
+
+adb forward tcp:31415 tcp:31415
+
+drozer console connect
+
+Source https://awesomeopensource.com/project/FSecureLABS/drozer

@@ -1,0 +1,6 @@
+When decompiling, AndroidManifest.xml starts in binary format.
+
+Use AXMLPrinter2.jar to decode it.
+
+java -jar AXMLPrinter2.jar AndroidManifest.xml > AndroidManifest.txt
+

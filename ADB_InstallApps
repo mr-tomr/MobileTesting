@@ -1,0 +1,28 @@
+Use ADB To Install Android Apps Apk File.
+
+1.1 Push app apk file to android device.
+//Push to system app folder
+adb push example.apk /system/app.
+//Push to user app folder
+adb push example.apk /data/app.
+This method has below disadvantages.
+
+Maybe overwrite the original app, so you had better use below command to backup the original app before operation.
+// Pull android apk from device to local folder.
+adb pull /system/app/example.apk    /user/app_bak
+Usually, you can encounter below error messages.
+failed to copy '/user/example.apk' to '/system/app/example.apk': Read-only file system.
+This is bacause /system/app folder is read-only, you can not push files into this folder.
+
+To resolve this problem, you need to use adb install command with -r option to force install the apk files, we will introduce it below.
+
+// -r means force install.
+adb install -r /user/example.apk
+Above adb install apk file command will install the apk file into /data/local/tmp/ directory.
+
+From local
+Run adb install apk file command as below to push android app into emulator /data/app directory.
+adb install C:/work/example.apk
+
+
+References: https://www.dev2qa.com/android-adb-install-uninstall-app-examples/

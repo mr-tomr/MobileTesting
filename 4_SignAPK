@@ -1,0 +1,25 @@
+After you have created your payload, like an APK, you have to sign it.
+
+On Windows (as administrator)
+  cmd
+On Mac
+  terminal
+On Linux
+  terminal
+
+
+In Windows the path you will need is similar to:
+  c:\Program Files\Java\jre1.8.0_271\bin
+
+keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+Press Enter on all [Unknown] detail items and at [no], type yes and press enter
+
+Copy the my-release-key.keystore to the directory where the APK file is.  Then run the following.
+  jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore ngroktest.apk alias_name
+
+
+See here for Java Keystore commands
+  https://www.sslshopper.com/article-most-common-java-keytool-keystore-commands.html
+  
+You can also use APK signer.  https://developer.android.com/studio/command-line/apksigner  The apksigner tool, available in revision 24.0.3 and higher of the Android SDK Build Tools, allows you to sign APKs and 
+to confirm that an APK's signature will be verified successfully on all versions of the Android platform supported by those APKs.

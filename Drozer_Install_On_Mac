@@ -1,0 +1,79 @@
+(not)Unique experience
+DONATE
+RU
+Installing Drozer on macOS Catalina
+In general, I don’t use Drozer. And using this tool on macOS is unusual for me. If I do some “pentest things” I just take my Kali Linux with pre-installed Drozer and use it there. But the day has come, and I decided to install Drozer on my macOS. It was a real hell =)
+
+I spent a lot of time trying to make it work. Eventually, I had to rewrite a piece of class loader script… A living hell! When everything started working right, I came up with a better way of installing Drozer on macOS and removed all this stuff . In fact, there are two good ways to do it. The Docker-way and the following one
+
+You need to download the latest release. Don’t build this app from sources, it’s a wrong way!
+
+$ mkdir drozer
+$ wget https://github.com/FSecureLABS/drozer/releases/download/2.4.4/drozer-2.4.4-py2-none-any.whl
+Create virtual environment with pipenv and install required dependencies.
+
+$ pipenv --python 2.7
+$ pipenv shell
+(drozer) $ pipenv install protobuf
+(drozer) $ pipenv install pyOpenSSL
+(drozer) $ pipenv install Twisted
+(drozer) $ pipenv install drozer-2.4.4-py2-none-any.whl
+You can also use this Pipfile to install all these things with one shot
+
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+protobuf = "*"
+pyopenssl = "*"
+twisted = "*"
+drozer = {path = "./drozer-2.4.4-py2-none-any.whl"}
+
+[requires]
+python_version = "2.7"
+Let’s check if everything works fine
+
+(drozer) $ drozer console connect --server <smartphone ip>
+
+
+            ..                    ..:.
+           ..o..                  .r..
+            ..a..  . ....... .  ..nd
+              ro..idsnemesisand..pr
+              .otectorandroidsneme.
+           .,sisandprotectorandroids+.
+         ..nemesisandprotectorandroidsn:.
+        .emesisandprotectorandroidsnemes..
+      ..isandp,..,rotectorandro,..,idsnem.
+      .isisandp..rotectorandroid..snemisis.
+      ,andprotectorandroidsnemisisandprotec.
+     .torandroidsnemesisandprotectorandroid.
+     .snemisisandprotectorandroidsnemesisan:
+     .dprotectorandroidsnemesisandprotector.
+
+drozer Console (v2.4.4)
+dz> run app.package.debuggable 
+Package: com.mwr.dz
+  UID: 10095
+  Permissions:
+   - android.permission.INTERNET
+
+dz> 
+Hooray! We made it work!
+
+security  android  drozer 
+See also
+Android Context
+← PREVIOUS POST
+
+    
+Fi5t  • © 2020  •  (not)Unique experience
+
+Hugo v0.82.0 powered  •  Theme Beautiful Hugo adapted from Beautiful Jekyll
+
+
+Source: - https://fi5t.xyz/en/posts/drozer-on-mac/

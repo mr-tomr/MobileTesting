@@ -1,0 +1,18 @@
+Use ADB Uninstall App Apk File Command.
+
+You can find the android app package name use android device monitor. The package name is located in /data/data folder.
+You can refer article Android Device Monitor Cannot Open Data Folder Resolve Method to learn how to use android device monitor.
+
+// Below command will return all the android app packages installed on the connected android device.  
+adb shell pm list packages -f -3 
+// uninstall android app by app package name.
+adb uninstall <app package name>
+> adb uninstall com.dev2qa.example
+Success
+2.2 Use ADB Shell Command.
+> adb shell 
+generic_x86:/ # cd /data/app
+generic_x86:/data/app # rm com.dev2qa.example.apk
+
+
+References - https://www.dev2qa.com/android-adb-install-uninstall-app-examples/

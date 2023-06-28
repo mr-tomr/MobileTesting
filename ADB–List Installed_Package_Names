@@ -1,0 +1,24 @@
+Android package management is done by the pm command on the ADB shell. To list all the installed packages on an Android device, use the following syntax.
+
+$ adb shell pm list packages
+To list only the system packages, use the “-s” option.
+
+$ adb shell pm list packages -s
+To list only 3rd party (or non-system) packages, use the “-3” option.
+
+$ adb shell pm list packages -3
+To list the package names as well as the path to the installed APK files, use the “-f” option.
+
+$ adb shell pm list packages -f
+The “-f” option can be combined with the other options as well. For example, to list system package names with the installed package location, use the “-f -s” option.
+
+$ adb shell pm list packages -f -s
+To list all the disabled package names, use the “-d” option.
+
+$ adb shell pm list packages -d
+To list all the enabled package names, use the “-e” option.
+
+$ adb shell pm list packages -e
+
+
+Reference - https://stackpointer.io/mobile/android-adb-list-installed-package-names/416/
